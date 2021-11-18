@@ -1,43 +1,21 @@
-//import { render } from "@testing-library/react";
-//import Itemcount from "./ItemCount";
+import { useEffect, useState } from "react";
+import customFetch from "./utils/CustomFetch";
 import ItemEvent from "./ItemEvent";
-import "./styles.css";
-import {products} from "./Item";
-import { pedirDatos } from "./Promises";
-import React, { useEffect, useState } from "react"
+const { products } = require('./utils/Item');
+
 
 const ItemListContainer = () => {
+    const [dato, setDato] = useState({});
 
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect( ()=> {
-      setLoading(true)
-
-      pedirDatos()
-      .then(res => setData(res))
-      .catch(err => console.log(err))
-      .finally(()=> {
-          setLoading(true)
-      })
-  }, [])
-
-  return (
-      <>
-      {loading ? <h2>Cargando...</h2>
-      : <ItemEvent products={data}/>
-      }
-      </>
-  )
-
+    useEffect(() => {
+        customFetch(2000, products)
+            .then(result => setDato(result))
+            .catch(err => console.log(err))
+    }, []);
+    
+    return (
+        <ItemEvent items={dato} />
+    );
 }
+
 export default ItemListContainer;
-
-
-
-
-
-
-  
-
-

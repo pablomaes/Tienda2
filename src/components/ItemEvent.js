@@ -1,22 +1,22 @@
-import React from "react";
 import Card from "./ItemList";
 
+const ItemEvent = ({items}) => {
 
+     return ( <>
+             {  
+               items.length > 0             
+               ? items.map(u => <Card key={u.id} image={u.image} nombre={u.nombre} stock={u.stock} cost={u.cost} />)
+               : <p>Cargando...</p>
+                            
+              }  
+              </>
+                   
 
-function ItemEvent(props) {
-    const eventsList = props.data.map(event => (
-      <Card
-        key={event.id}  
-        image={event.image}
-        nombre={event.nombre}
-        stock={event.stock}
-        cost={event.cost}
-      />
-    ));
+            ); 
+}               
   
-    return <div>{eventsList}</div>;
-    
-  };
+
+  
 
 export default ItemEvent;
 

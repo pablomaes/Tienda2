@@ -1,11 +1,12 @@
 import React from "react";
+import "./styles.css";
 
 function CardImage(props) {
   
     return (
       <div>
         <img
-          style={{ width: props.width + "px" }}
+          width = {300}
           src={props.image}
           alt=""
         />
@@ -25,25 +26,24 @@ function CardContent(props) {
   );
 }
 
-export default class Card extends React.Component {
-
-  render() {
-    return (
-      <div style={{ width: this.props.width + "px" }}>
-        <div className="styleCard" id={this.props.id}>
+ const Card = ({width, nombre, stock, cost, image }) => {
+  return (  
+      <>
+      <div>
+        <div className="styleCard">
           <CardImage
-            image={this.props.image}
-            width={this.props.width}
+            image={image}
+            width = {width}
           />
           <CardContent
-            title={this.props.title}
-            nombre={this.props.nombre}
-            stock={this.props.stock}
-            cost={this.props.cost}
+            nombre={nombre}
+            stock={stock}
+            cost={cost}
           />
         </div>
       </div>
+      </>
     );
-  }
+  
 }
-
+export default Card;
