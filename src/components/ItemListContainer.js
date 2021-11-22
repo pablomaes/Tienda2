@@ -14,8 +14,9 @@ const ItemListContainer = () => {
     }, []);
     
     return (
-        <ItemEvent items={dato} />
+        <ItemEvent items={dato}/>
     );
 }
 
 export default ItemListContainer;
+
