@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import customFetch from "./utils/CustomFetch";
-import ItemList from "./ItemList";
-const { products } = require('./utils/Item');
+import ItemDetail from "./ItemDetail";
+const { products } = require('./utils/products');
 
 
-const ItemListContainer = () => {
+const ItemDetailContainer = () => {
     const [dato, setDato] = useState({});
 
     useEffect(() => {
-        customFetch(2000, products)
+        customFetch(2000, products[0])
             .then(result => setDato(result))
             .catch(err => console.log(err))
     }, []);
     
     return (
-        <ItemList items={dato}/>
+        <ItemDetail item = {dato} />
     );
 }
 
-export default ItemListContainer;
-
+export default ItemDetailContainer;

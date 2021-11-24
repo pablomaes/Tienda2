@@ -7,7 +7,7 @@
     
     color: #253b56;
     text-align: center;
-    
+
 
   }
   
@@ -16,6 +16,10 @@
     
   }
   
+  .styleImg {
+    width: 100;
+    height: 100;
+  }
 
   .styleCardTitle {
     
