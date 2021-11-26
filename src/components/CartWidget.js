@@ -1,5 +1,7 @@
 import logo from "../components/assets/img/logo.jpeg"
 
+
+
 function CartWidget () {
     return (
         <>
@@ -8,11 +10,12 @@ function CartWidget () {
                 <img src = {logo} alt ="logo" className= {"img-thumbnail"} width= {150} />
                </a>
             </nav>
-          
+
         </>
     )
 };
 
 export default CartWidget;
+
 
 

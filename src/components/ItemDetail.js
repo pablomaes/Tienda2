@@ -4,31 +4,7 @@ import setState from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 
-//function CardImage(props) {
-//  
-//    return (
-//      <div>
-//        <img
-//          width = {300}
-//          src={props.image}
-//          alt=""
-//        />
-//      </div>
-//    );
-//
-//}
-//
-//function CardContent(props) {
-//  return (
-//    <div className="styleCardContent">
-//      <p className="styleCardTitle">{props.nombre}</p>
-//      <p className="styleStock">Stock: {props.stock} unidades</p>
-//      <p className="styleCost">Precio: ${props.cost}</p>
-//      <button>Agregar al carrito</button>
-//      </div>
-//  );
-//}
-//
+
 class ItemInfo extends React.Component {
   constructor(props) {
       super(props);
@@ -46,44 +22,18 @@ class ItemInfo extends React.Component {
       );
     }
   }
-//
-//  const ItemDetail = ({width, nombre, stock, cost, image,info }) => {
-//  return (  
-//      <>
-//      <div>
-//        <div className="styleCard">
-//          <CardImage
-//            image={image}
-//            width = {width}
-//          />
-//          <CardContent
-//            nombre={nombre}
-//            stock={stock}
-//            cost={cost}
-//            info= {info}
-//          />
-//        </div>
-//      <div className="styleInfo">
-//          <ItemInfo
-//            info= {info}
-//          />
-//      </div>
-//      </div>
-//      </>
-//    );
-//  
-//}
-//export default ItemDetail;
+
 
 const ItemDetail = ({ item }) => {
+
 
     return (
         <>
         { 
-            item.image
+            item && item.image
             ? 
             <div className="styleCard">
-            <img width = {300} src={item.image[0]} />
+            <img width = {300} src={item.image[0]} alt ="" />
                    
             <div className="styleCardContent">
             <h5 className="styleCardCtitle"> {item.nombre}  </h5>
@@ -93,6 +43,7 @@ const ItemDetail = ({ item }) => {
             info= {item.info}
 
             />
+            <ItemCount stock={item.stock} initial={1} />
             </div>
             </div>
             : <p>Cargando...</p>
