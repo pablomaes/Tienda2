@@ -41,14 +41,18 @@ const MenuItem = styled.div`
 
 //ItemCount
 const ProductAmountContainer = styled.div`
-    display: flex;
-    align-items: center;
-    margin: 20px;
+    
+flex: 1;
+display: flex;
+align-items: center;
+justify-content: center;
 `;
 
 const ProductAmount = styled.div`
     font-size: 24px;
     margin: 5px;
+    align-items: center;
+    text-align: center;
 `;
 
 

@@ -1,4 +1,3 @@
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
 import customFetch from "./utils/CustomFetch";
 import { useEffect, useState } from 'react';
