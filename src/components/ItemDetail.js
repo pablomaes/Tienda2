@@ -1,11 +1,12 @@
 import ItemCount from './ItemCount';
 import React from 'react';
-import setState from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css'
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CartContext } from './CartContext';
+import { Center }  from './styledComponents';
 
 class ItemInfo extends React.Component {
   constructor(props) {
@@ -26,13 +27,15 @@ class ItemInfo extends React.Component {
   }
 
 
-const ItemDetail = ({ item }) => {
-  const [itemCount, setItemCount] = useState(0);
+  const ItemDetail = ({ item }) => {
+    const [itemCount, setItemCount] = useState(0);
+    const test = useContext(CartContext);
 
-  const onAdd = (qty) => {
-    alert("You have selected " + qty + " items.");
-    setItemCount(qty);
-}  
+    const onAdd = (qty) => {
+        alert("You have selected " + qty + " items.");
+        setItemCount(qty);
+        test.addToCart(item, qty);
+    }
 
     return (
         <>
@@ -51,11 +54,11 @@ const ItemDetail = ({ item }) => {
             info= {item.info}
 
             />
-            <n></n>
+
             {
             itemCount === 0
             ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
-            : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Ir al carrito</Button></Link>
+            : <Center><Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Ir al carrito</Button></Link></Center>
             }
             </div>
             </div>

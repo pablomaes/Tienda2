@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import { Add, Remove } from '@material-ui/icons';
 import { useEffect, useState } from 'react';
-import { ProductAmountContainer, ProductAmount } from './styledComponents';
+import { ProductAmountContainer, ProductAmount, Center } from './styledComponents';
 
 const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
     const [count, setCount] = useState(0);
@@ -22,6 +22,7 @@ const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
         }
     }
     return (
+        <Center>
         <ProductAmountContainer>
             <Button variant="text" onClick={decrement}><Remove /></Button>
             <ProductAmount>{count}</ProductAmount>
@@ -34,6 +35,7 @@ const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
             }
             
         </ProductAmountContainer>
+        </Center>
     );
 }
 

@@ -1,19 +1,13 @@
-import logo from "../components/assets/img/logo.jpeg"
+import { Badge } from "@material-ui/core";
+import { ShoppingCartOutlined } from "@material-ui/icons";
 
-
-
-function CartWidget () {
+const CartWidget = () => {
     return (
-        <>
-            <nav className="navbar navbar-light bg-light">
-               <a className="navbar-brand">
-                <img src = {logo} alt ="logo" className= {"img-thumbnail"} width= {150} />
-               </a>
-            </nav>
-
-        </>
-    )
-};
+        <Badge badgeContent={1} color="secondary">
+            <ShoppingCartOutlined />
+        </Badge>
+    );
+}
 
 export default CartWidget;
 
