@@ -208,8 +208,12 @@ const PriceDetail = styled.div`
 `;
 
 const ProductPrice = styled.div`
+  font-size: 20px;
+  font-weight: 100;
+`;
+const ProductTotalPrice = styled.div`
   font-size: 30px;
-  font-weight: 200;
+  font-weight: 300;
 `;
 
 export { 
@@ -218,5 +222,5 @@ export {
     ProductsContainer, ProductContainer,
     Circle, Image, Info, Icon,
     DetailContainer, WrapperDetail, ImgContainer, ImageDetail, InfoContainer, Title, Desc, Price,
-    WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ProductPrice
+    WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ProductPrice,ProductTotalPrice
 }
