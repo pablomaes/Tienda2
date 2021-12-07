@@ -4,8 +4,55 @@ import { CartContext } from './CartContext';
 import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ProductAmountContainer, ProductAmount, ProductPrice, ProductTotalPrice } from './styledComponents';
 import { Top, TopButton, TopText, Summary, SummaryTitle, SummaryItemText, SummaryItemPrice, SummaryItem, Button } from './styledCart'
 
+import { collection, doc, setDoc, serverTimestamp, updateDoc, increment } from "firebase/firestore";
+import db from './utils/firebaseConfig';
+
 const Cart = () => {
     const test = useContext(CartContext);
+    const createOrder = () => {
+        const itemsForDB = test.cartList.map(item => ({
+          id: item.idItem,
+          title: item.nameItem,
+          price: item.costItem,
+          qty: item.qtyItem,
+        }));
+    
+        test.cartList.forEach(async (item) => {
+          const itemRef = doc(db, "products", item.idItem);
+          await updateDoc(itemRef, {
+            stock: increment(-item.qtyItem)
+          });
+        });
+    
+        let order = {
+          buyer: {
+            name: "Pablo Maestu",
+            email: "pablomaestu32@gmail.com",
+            phone: "123456789"
+          },
+          total: test.calcTotal(),
+          items: itemsForDB,
+          date: serverTimestamp()
+        };
+      
+        console.log(order);
+        
+        const createOrderInFirestore = async () => {
+          
+          const newOrderRef = doc(collection(db, "orders"));
+          await setDoc(newOrderRef, order);
+          return newOrderRef;
+        }
+      
+        createOrderInFirestore()
+          .then(result => alert('Su orden fue creada con éxito. Tome nota del ID.\n\n\nOrder ID: ' + result.id + '\n\n'))
+          .catch(err => console.log(err));
+      
+        test.removeList();
+      
+      }
+
+
 
     return (
         <WrapperCart>
@@ -57,7 +104,7 @@ const Cart = () => {
                                 <SummaryItemText>Total</SummaryItemText>
                                 <SummaryItemPrice>$ {test.calcTotal()} </SummaryItemPrice>
                             </SummaryItem>
-                            <Button>Comprar ahora</Button>
+                            <Button onClick={ createOrder }>Comprar ahora</Button>
                         </Summary>
                 }
 
