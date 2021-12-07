@@ -12,8 +12,8 @@ const NavBar = () => {
                 </Left>
                 <Center>
                     <Link to='/' style={{textDecoration: "none", color: "white"}}><MenuItem>Productos</MenuItem></Link>
-                    <Link to='/category/1' style={{textDecoration: "none", color: "white"}}><MenuItem>Utensillos</MenuItem></Link>
-                    <Link to='/category/2' style={{textDecoration: "none", color: "white"}}><MenuItem>Combos</MenuItem></Link>                    
+                    <Link to='/category/articulo' style={{textDecoration: "none", color: "white"}}><MenuItem>Utensillos</MenuItem></Link>
+                    <Link to='/category/combos' style={{textDecoration: "none", color: "white"}}><MenuItem>Combos</MenuItem></Link>                    
                 </Center>
                 <Right>
                     <MenuItem>REGISTER</MenuItem>

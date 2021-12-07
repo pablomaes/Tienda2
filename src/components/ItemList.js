@@ -5,7 +5,7 @@ const ItemList = ({items}) => {
      return ( <>
              {  
                items.length > 0             
-               ? items.map(u => <Item key={u.id} id={u.id} image={u.image[0]} nombre={u.nombre} stock={u.stock} cost={u.cost} info = {u.info} />)
+               ? items.map(item => <Item key={item.id} id={item.id} nombre={item.nombre} cost={item.cost} image={item.image[0]} stock={item.stock} />)
                : <p>Cargando...</p>
                             
               }  
